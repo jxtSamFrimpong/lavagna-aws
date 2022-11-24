@@ -19,7 +19,7 @@ ENV SPRING_PROFILE="dev"
 #COPY entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-WORKDIR /lavagna/project/target
+WORKDIR /lavagna-aws/project/target
 
 ENTRYPOINT [ "entrypoint.sh" ]
 
