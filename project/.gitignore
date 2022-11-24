@@ -25,3 +25,6 @@ oracle-xe-11.2.0-1.0.x86_64.rpm.zip
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+.*
+!.env
