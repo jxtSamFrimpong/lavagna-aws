@@ -35,10 +35,10 @@ services:
       start_period: 30s
 
   lavagna:
-    # image: lavagna:6
-    build:
-      context: .
-      dockerfile: Dockerfile.6-aws.2
+    image: 644435390668.dkr.ecr.us-west-2.amazonaws.com/schmiterlin:lavagna
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile.6-aws.2
     ports:
       - 8080:8080
     depends_on:
@@ -82,10 +82,10 @@ services:
       - ./docs-conf/nginx.conf:/etc/nginx/nginx.conf
 
   docs:
-    #image: lavagna:7
-    build:
-      context: .
-      dockerfile: Dockerfile.7
+    image: 644435390668.dkr.ecr.us-west-2.amazonaws.com/schmiterlin:docs
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile.7
     #hostname: abroad-host
     # ports:
     #   - 8081:45001
