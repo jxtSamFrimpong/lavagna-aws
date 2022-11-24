@@ -48,7 +48,7 @@ services:
       - db-net
       - public-net
     volumes:
-      - /lavagna:/lavagna
+      - /lavagna-aws:/lavagna
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://lavagna:8080 || exit
       interval: 5s
