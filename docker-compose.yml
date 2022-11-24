@@ -91,6 +91,8 @@ services:
     #   - 8081:45001
     networks:
       - public-net
+    volumes:
+      - ./project:/project
 
 networks:
   db-net:
