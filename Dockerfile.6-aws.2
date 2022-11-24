@@ -16,7 +16,7 @@ ENV DB_USER="user"
 ENV DB_PASS="user"
 ENV SPRING_PROFILE="dev"
 
-#COPY entrypoint.sh /usr/local/bin
+COPY entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 WORKDIR /lavagna/project/target
