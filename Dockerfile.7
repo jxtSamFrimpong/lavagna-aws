@@ -1,0 +1,7 @@
+FROM maven:3.6.3-openjdk-8
+
+#COPY project /project
+WORKDIR /project
+
+
+ENTRYPOINT [ "mvn", "stampo:serve" ]

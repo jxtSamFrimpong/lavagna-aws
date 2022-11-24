@@ -1,0 +1,26 @@
+# FROM maven:3.6.3-openjdk-8 as stage
+
+# COPY project /project
+
+# WORKDIR /project
+
+# RUN mvn verify
+
+FROM openjdk:8-jre-alpine
+
+#COPY --from=stage /project/target /target
+
+ENV DB_DIALECT="MYSQL"
+ENV DB_URL="jdbc:mysql://db:3306/lavagna?autoReconnect=true&useSSL=false"
+ENV DB_USER="user"
+ENV DB_PASS="user"
+ENV SPRING_PROFILE="dev"
+
+#COPY entrypoint.sh /usr/local/bin
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+WORKDIR /lavagna/project/target
+
+ENTRYPOINT [ "entrypoint.sh" ]
+
+
