@@ -48,11 +48,11 @@ echo "docs version = $DOCS_VERSION"
 echo "lavagna version = $LAVAGNA_VERSION"
 
 pass_env(){
-    echo "DOCS=$DOCS_VERSION" > .env
-    echo "LAVAGNA=$LAVAGNA_VERSION" >> .env
-    echo "MYSQL=$MYSQL_VERSION" >> .env
-    echo "COMPOSE_PROJECT_NAME=$PROJECT_NAME" >> .env
-    echo "PROJ_VERSION=$PROJECT_DEPLOY_VERSION" >> .env
+    sudo echo "DOCS=$DOCS_VERSION" > .env
+    sudo echo "LAVAGNA=$LAVAGNA_VERSION" >> .env
+    sudo echo "MYSQL=$MYSQL_VERSION" >> .env
+    sudo echo "COMPOSE_PROJECT_NAME=$PROJECT_NAME" >> .env
+    sudo echo "PROJ_VERSION=$PROJECT_DEPLOY_VERSION" >> .env
 }
 
 
@@ -69,16 +69,16 @@ build_and_push_images(){
 }
 
 build_tar_and_name(){
-    mkdir "$PROJECT_NAME"
-    cp conf/ docs-conf/ project/ docker-compose.yml main.sh .env entrypoint.sh docker-install.sh -r "$PROJECT_NAME"
-    rm -rf "$PROJECT_NAME/project/.*"
-    rm -rf "$PROJECT_NAME/project/src/.*"
-    rm -rf "$PROJECT_NAME/project/src/main/.*"
+    sudo mkdir "$PROJECT_NAME"
+    sudo cp conf/ docs-conf/ project/ docker-compose.yml main.sh .env entrypoint.sh docker-install.sh -r "$PROJECT_NAME"
+    sudo rm -rf "$PROJECT_NAME/project/.*"
+    sudo rm -rf "$PROJECT_NAME/project/src/.*"
+    sudo rm -rf "$PROJECT_NAME/project/src/main/.*"
     #TODO remove unecessary dir's
 
-    tar -czvf "${PROJECT_NAME}_${PROJECT_DEPLOY_VERSION}.tar.gz" "$PROJECT_NAME"
+    sudo tar -czvf "${PROJECT_NAME}_${PROJECT_DEPLOY_VERSION}.tar.gz" "$PROJECT_NAME"
 
-    rm -rf "$PROJECT_NAME"
+    sudo rm -rf "$PROJECT_NAME"
 
 }
 
