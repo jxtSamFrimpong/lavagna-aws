@@ -33,7 +33,7 @@ done
 shift "$(($OPTIND -1))"
 
 untar_packack(){
-    tar -xzvf "${PROJECT_NAME}_${PROJECT_DEPLOY_VERSION}.tar.gz" -C $UNTAR_DIRECTORY
+    sudo tar -xzvf "${PROJECT_NAME}_${PROJECT_DEPLOY_VERSION}.tar.gz" -C $UNTAR_DIRECTORY
 
     chmod 766 "$PROJECT_NAME"
 
