@@ -1,38 +1,38 @@
 version: '3.9'
 
 services:
-  db:
-    image: mysql:${MYSQL}
-    container_name: db
-    # command: --default-authentication-plugin=mysql_native_password
-    environment:
-      MYSQL_USER: "user"
-      MYSQL_PASSWORD: "user"
-      MYSQL_ROOT_PASSWORD: "user"
-      MYSQL_DATABASE: "lavagna"
-      SERVICE_NAME: "db"
-    networks:
-      - db-net
-    volumes:
-      - db-vol:/var/lib/mysql
-    healthcheck:
-      #test: [ "CMD", "mysqladmin", "ping", "-h", "localhost:3306" ]
-      #test: [ "CMD", "mysqladmin", "ping", "-h", "mysqldb" ]
-      test:
-        [
-          "CMD",
-          'mysqladmin',
-          'ping',
-          '-h',
-          'localhost',
-          #'db:3306/lavagna',
-          '-uroot',
-          '-puser' #'-p$$MYSQL_ROOT_PASSWORD'
-        ]
-      interval: 10s
-      timeout: 40s
-      retries: 10
-      start_period: 30s
+  # db:
+  #   image: mysql:${MYSQL}
+  #   container_name: db
+  #   # command: --default-authentication-plugin=mysql_native_password
+  #   environment:
+  #     MYSQL_USER: "user"
+  #     MYSQL_PASSWORD: "useruser"
+  #     MYSQL_ROOT_PASSWORD: "useruser"
+  #     MYSQL_DATABASE: "lavagna"
+  #     SERVICE_NAME: "db"
+  #   networks:
+  #     - db-net
+  #   volumes:
+  #     - db-vol:/var/lib/mysql
+  #   healthcheck:
+  #     #test: [ "CMD", "mysqladmin", "ping", "-h", "localhost:3306" ]
+  #     #test: [ "CMD", "mysqladmin", "ping", "-h", "mysqldb" ]
+  #     test:
+  #       [
+  #         "CMD",
+  #         'mysqladmin',
+  #         'ping',
+  #         '-h',
+  #         'localhost',
+  #         #'db:3306/lavagna',
+  #         '-uroot',
+  #         '-puser' #'-p$$MYSQL_ROOT_PASSWORD'
+  #       ]
+  #     interval: 10s
+  #     timeout: 40s
+  #     retries: 10
+  #     start_period: 30s
 
   lavagna:
     image: 644435390668.dkr.ecr.us-west-2.amazonaws.com/schmiterlin:${LAVAGNA}
@@ -41,9 +41,10 @@ services:
     #   dockerfile: Dockerfile.6-aws.2
     ports:
       - 8080:8080
-    depends_on:
-      db:
-        condition: service_healthy
+      - 3306:3306
+#     depends_on:
+#       db:
+#         condition: service_healthy
     networks:
       - db-net
       - public-net
